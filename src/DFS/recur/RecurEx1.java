@@ -1,7 +1,8 @@
-import java.io.*;
-import java.util.StringTokenizer;
+package DFS.recur;
 
-public class Main {
+import java.io.*;
+
+public class RecurEx1 {
 
     static int N;
 
@@ -12,20 +13,20 @@ public class Main {
             dfs(idx - 1);
             System.out.print(idx + " ");
         }
-
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void logic() throws IOException {
         // input
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         N = Integer.parseInt(br.readLine());
-        
+
         // 재귀함수 호출
         dfs(N);
 
         br.close();
         bw.close();
     }
+
 }

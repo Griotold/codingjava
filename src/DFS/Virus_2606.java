@@ -48,7 +48,7 @@ public class Virus_2606 {
         bw.write(String.valueOf(answer - 1));
 
         br.close();
-        br.close();
+        bw.close();
     }
 
 }
