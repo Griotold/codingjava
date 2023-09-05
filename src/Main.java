@@ -3,14 +3,13 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    static int N;
-
     public static void dfs(int idx) {
-        if (idx == 1) {
-            System.out.print(idx);
+        if (idx > 7) {
+            return;
         } else {
-            dfs(idx / 2);
-            System.out.print(idx % 2);
+            System.out.print(idx + " ");
+            dfs(idx * 2);
+            dfs(idx * 2 + 1);
         }
 
     }
@@ -20,10 +19,8 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        N = Integer.parseInt(br.readLine());
-        
         // 재귀함수 호출
-        dfs(N);
+        dfs(1);
 
         br.close();
         bw.close();
