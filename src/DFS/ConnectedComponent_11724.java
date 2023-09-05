@@ -1,7 +1,9 @@
+package DFS;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Main {
+public class ConnectedComponent_11724 {
 
     static boolean[][] graph;
 
@@ -10,7 +12,6 @@ public class Main {
     static int N, M;
 
     static int cnt = 0;
-
 
     public static void dfs(int idx) {
         for(int i = 1; i <= N; i++){
@@ -21,7 +22,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void logic() throws IOException {
         // input
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
