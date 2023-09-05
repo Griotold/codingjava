@@ -1,7 +1,9 @@
+package DFS;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Virus_2606 {
 
     static boolean[][] graph;
     static boolean[] visited;
@@ -18,7 +20,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void logic() throws IOException {
         // input
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -48,4 +50,5 @@ public class Main {
         br.close();
         br.close();
     }
+
 }
