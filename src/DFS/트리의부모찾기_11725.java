@@ -1,11 +1,16 @@
+package DFS;
+
 import java.util.*;
 import java.io.*;
-public class Main {
+
+public class 트리의부모찾기_11725 {
+
     static final int MAX = 100000 + 10;
     static ArrayList<Integer>[] graph;
     static boolean[] visited;
     static int[] parents;
     static int N;
+
     public static void dfs(int idx, int prev) {
         visited[idx] = true;
         parents[idx] = prev;
@@ -16,7 +21,8 @@ public class Main {
                 dfs(next, idx);
         }
     }
-    public static void main(String[] args) throws IOException {
+
+    public static void logic() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
