@@ -1,6 +1,10 @@
+package DFS;
+
 import java.io.*;
 import java.util.*;
-public class Main {
+
+public class 촌수계산_2644 {
+
     static final int MAX = 100 + 10;
     static boolean[][] graph;
     static boolean[] visited;
@@ -17,9 +21,9 @@ public class Main {
                 }
             }
         }
-
     }
-    public static void main(String[] args) throws IOException {
+
+    public static void logic() throws IOException {
         // 0. 입력 및 초기화
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
