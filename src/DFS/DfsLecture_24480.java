@@ -1,6 +1,9 @@
+package DFS;
+
 import java.io.*;
 import java.util.*;
-public class Main {
+public class DfsLecture_24480 {
+
     static final int MAX = 100000 + 10;
 
     static ArrayList<Integer>[] graph;
@@ -18,7 +21,8 @@ public class Main {
                 dfs(next);
         }
     }
-    public static void main(String[] args) throws IOException{
+
+    public static void logic() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
