@@ -1,6 +1,9 @@
+package DFS;
+
 import java.io.*;
 import java.util.*;
-public class Main {
+
+public class 점프왕쩰리_16173 {
 
     static final int MAX = 3 + 100 + 10;
     static int[][] map;
@@ -18,7 +21,8 @@ public class Main {
         if(y + step <= N && !visited[y + step][x]) dfs(y + step, x);
         if(x + step <= N && !visited[y][x + step]) dfs(y, x + step);
     }
-    public static void main(String[] args) throws IOException {
+
+    public static void logic() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         N = Integer.parseInt(br.readLine());
