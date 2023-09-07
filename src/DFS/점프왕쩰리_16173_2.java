@@ -1,7 +1,10 @@
+package DFS;
+
 import java.io.*;
 import java.util.*;
-public class Main {
-    // MAX map visited dy dx N
+
+public class 점프왕쩰리_16173_2 {
+
     static final int MAX = 3 + 100 + 10;
     static int[][] map;
     static boolean[][] visited;
@@ -20,7 +23,8 @@ public class Main {
         }
 
     }
-    public static void main(String[] args) throws IOException {
+
+    public static void logic() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         N = Integer.parseInt(br.readLine());
