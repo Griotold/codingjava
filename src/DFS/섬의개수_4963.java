@@ -1,8 +1,10 @@
+package DFS;
+
 import java.io.*;
 import java.util.*;
 
-public class Main {
-    // MAX map visited, N, M, dy dy(상하좌우대각선)
+public class 섬의개수_4963 {
+
     static final int MAX = 50 + 10;
     static boolean[][] map;
     static boolean[][] visited;
@@ -20,9 +22,9 @@ public class Main {
             if(map[ny][nx] && !visited[ny][nx])
                 dfs(ny, nx);
         }
-
     }
-    public static void main(String[] args) throws IOException {
+
+    public static void logic() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
