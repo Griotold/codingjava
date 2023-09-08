@@ -1,6 +1,8 @@
-import java.util.*;
+package programmers;
 
-class Solution {
+import java.util.HashMap;
+
+public class 전화번호목록_해시 {
     public boolean solution(String[] phone_book) {
         // 1. HashMap을 만든다
         HashMap<String, Integer> map = new HashMap<>();
@@ -12,16 +14,10 @@ class Solution {
         for(int i = 0; i < phone_book.length; i++) {
             for (int j = 1; j < phone_book[i].length(); j++) {
                 if (map.containsKey(phone_book[i].substring(0, j)));
-                    return false;
+                return false;
             }
         }
         // 3. 여기까지 왔다면 접두어가 없다는 거다.
         return true;
-    }
-
-    public static void main(String[] args) {
-        String[] phone_book = {"119", "9763422", "11912459"};
-        Solution sol = new Solution();
-        System.out.println(sol.solution(phone_book));
     }
 }
