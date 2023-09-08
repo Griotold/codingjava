@@ -1,5 +1,10 @@
-import java.util.*;
-public class Main {
+package programmers;
+
+import java.util.Arrays;
+/**
+ * 정렬과 반복문 활용
+ * */
+public class 완주하지못한선수_1 {
 
     public static String solution(String[] participant, String[] completion) {
         String answer = "";
