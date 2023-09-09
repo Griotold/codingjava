@@ -1,6 +1,11 @@
-import java.util.*;
+package DFS;
+
 import java.io.*;
-public class Main {
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class 단지번호붙이기_2667 {
+
     static final int MAX = 25 + 10;
     static boolean[][] map;
     static boolean[][] visited;
@@ -19,9 +24,9 @@ public class Main {
             if (map[ny][nx] && !visited[ny][nx])
                 dfs(ny, nx);
         }
-
     }
-    public static void main(String[] args) throws IOException {
+
+    public static void logic() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         N = Integer.parseInt(br.readLine());
