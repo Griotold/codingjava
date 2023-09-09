@@ -1,6 +1,10 @@
-import java.util.*;
+package programmers;
 
-class Solution {
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class 의상_iterator활용 {
+
     public int solution(String[][] clothes) {
         // 1. 옷을 종류 별로 구분한다.
         HashMap<String, Integer> map = new HashMap<>();
@@ -17,13 +21,5 @@ class Solution {
 
         // 3. 아무 종류의 옷도 입지 않는 경우 제외한다.
         return answer - 1;
-    }
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        String[][] clothes = { {"yellowhat", "headgear"},
-                                {"bluesunglasses", "eyewear"},
-                                {"green_turban", "headgear"}};
-        System.out.println(sol.solution(clothes));
     }
 }
