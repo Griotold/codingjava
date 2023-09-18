@@ -2,31 +2,42 @@ import java.io.*;
 import java.util.*;
 public class Main {
     /**
-     * 자연수 N이 입력되면 1부터 N까지 수 중
-     * M의 배수들의 합을 출력하는 프로그램
-     * 입력 : 15 3
-     * 출력 : 45
+     * 3. 문장 속 단어
+     * 주어진 문장 속에서 가장 긴 단어 찾기
+     * 여러 개라면 가장 앞에 나온 거 반환
      * */
-    public int solution(int N, int M) {
-        int answer = 0;
-        // 1. N까지 반복문을 돌다가 배수라면 answer에 더한다
-        for(int i = 1; i <= N; i++){
-            if (i % M == 0) answer += i;
-        }
-
-        // 2. answer 출력
-
-        return answer;
-    }
+//    public String solution(String str) {
+//        String answer = "";
+//        // 1.
+////        st = new StringTokenizer()
+//
+//        return answer;
+//    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        Main main = new Main();
-        System.out.println(main.solution(N, M));
+        String str = br.readLine();
+        StringTokenizer st = new StringTokenizer(str);
+
+        String answer = "";
+        int max = 0;
+        while(st.hasMoreElements()) {
+            // 1. 토큰 쪼개기
+            String temp = st.nextToken();
+            int size = temp.length();
+
+            // 2. 가장 긴 단어 찾기
+            if(size > max) {
+                max = size;
+                answer = temp;
+            }
+        }
+
+        // answer 출력
+        System.out.println(answer);
+//        Main main = new Main();
+//        System.out.println(main.solution(str));
         br.close();
         bw.close();
     }
