@@ -2,37 +2,41 @@ import java.io.*;
 import java.util.*;
 public class Main {
     /**
-     * 4. 단어 뒤집기
-     * 단어가 들어오면 단어를 뒤집어서 출력
-     * good -> doog
-     * 근데 단어가 여러 개 들어온다.
+     * 5. 특정 문자 뒤집기
+     * 영어는 뒤집고 특수문자는 자기 자리 그대로
+     * a#b!GE*T@S -> S#T!EGb@a
      * */
+    public String solution(String str) {
+        char[] answer = str.toCharArray();
+        int lt = 0;
+        int rt = str.length() - 1;
+        while(lt < rt){
+            if (!Character.isAlphabetic(answer[lt])){
+                // 왼쪽 애가 특수 문자일 때
+                lt++;
+            } else if(!Character.isAlphabetic(answer[rt])) {
+                // 오른쪽 애가 특수 문자일 때
+                rt--;
+            } else {
+                // 둘다 알파벳일 때
+                char temp = answer[lt];
+                answer[lt] = answer[rt];
+                answer[rt] = temp;
+                lt++;
+                rt--;
+            }
+        }
+//        String answerStr = answer.toString();
+        return new String(answer);
+    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int N = Integer.parseInt(br.readLine());
-        ArrayList<String> list = new ArrayList<>();
-        for(int i = 0; i < N; i++) {
-            list.add(br.readLine()); // good Time Big
-        }
 
-        ArrayList<String> answerList = new ArrayList<>();
-        int size = list.size(); // 3
-        while(size != 0) {
-            // 뒤집어 보자
-            String answer = "";
-            String temp = list.remove(0);
-            for(int i = temp.length() - 1; i >= 0; i--) {
-                answer += temp.charAt(i);
-            }
-            answerList.add(answer);
-            size--;
-        }
-        for (String reversed : answerList) {
-            bw.write(reversed);
-            bw.newLine();
-        }
+        Main T = new Main();
+        String str = br.readLine();
+        System.out.println(T.solution(str));
         br.close();
         bw.close();
     }
