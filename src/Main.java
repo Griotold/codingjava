@@ -2,42 +2,37 @@ import java.io.*;
 import java.util.*;
 public class Main {
     /**
-     * 3. 문장 속 단어
-     * 주어진 문장 속에서 가장 긴 단어 찾기
-     * 여러 개라면 가장 앞에 나온 거 반환
+     * 4. 단어 뒤집기
+     * 단어가 들어오면 단어를 뒤집어서 출력
+     * good -> doog
+     * 근데 단어가 여러 개 들어온다.
      * */
-//    public String solution(String str) {
-//        String answer = "";
-//        // 1.
-////        st = new StringTokenizer()
-//
-//        return answer;
-//    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String str = br.readLine();
-        StringTokenizer st = new StringTokenizer(str);
-
-        String answer = "";
-        int max = 0;
-        while(st.hasMoreElements()) {
-            // 1. 토큰 쪼개기
-            String temp = st.nextToken();
-            int size = temp.length();
-
-            // 2. 가장 긴 단어 찾기
-            if(size > max) {
-                max = size;
-                answer = temp;
-            }
+        int N = Integer.parseInt(br.readLine());
+        ArrayList<String> list = new ArrayList<>();
+        for(int i = 0; i < N; i++) {
+            list.add(br.readLine()); // good Time Big
         }
 
-        // answer 출력
-        System.out.println(answer);
-//        Main main = new Main();
-//        System.out.println(main.solution(str));
+        ArrayList<String> answerList = new ArrayList<>();
+        int size = list.size(); // 3
+        while(size != 0) {
+            // 뒤집어 보자
+            String answer = "";
+            String temp = list.remove(0);
+            for(int i = temp.length() - 1; i >= 0; i--) {
+                answer += temp.charAt(i);
+            }
+            answerList.add(answer);
+            size--;
+        }
+        for (String reversed : answerList) {
+            bw.write(reversed);
+            bw.newLine();
+        }
         br.close();
         bw.close();
     }
