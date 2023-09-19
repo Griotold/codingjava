@@ -1,11 +1,9 @@
+package baekjoon.string;
+
 import java.io.*;
-import java.util.*;
-public class Main {
-    /**
-     * 다이얼 5622
-     * 할머니가 외운 단어 -> 전화를 걸기 위한 최소 시간
-     * */
-    public static void main(String[] args) throws IOException {
+
+public class 다이얼_5622 {
+    public void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         // WA
