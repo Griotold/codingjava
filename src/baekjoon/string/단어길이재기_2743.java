@@ -1,12 +1,10 @@
-import java.io.*;
-import java.util.*;
-public class Main {
-    /**
-     * 단어 길이 재기
-     * 길이 출력
-     * */
+package baekjoon.string;
 
-    public static void main(String[] args) throws IOException {
+import java.io.*;
+
+public class 단어길이재기_2743 {
+
+    public void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         String s = br.readLine();
