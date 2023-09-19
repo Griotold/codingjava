@@ -1,12 +1,10 @@
-import java.io.*;
-import java.util.*;
-public class Main {
-    /**
-     * 문자열
-     * 첫글자와 마지막 글자 출력
-     * */
+package baekjoon.string;
 
-    public static void main(String[] args) throws IOException {
+import java.io.*;
+
+public class 문자열_9086 {
+
+    public void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
