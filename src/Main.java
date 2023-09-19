@@ -2,35 +2,18 @@ import java.io.*;
 import java.util.*;
 public class Main {
     /**
-     * 6. 중복문자제거
-     * ksekkset → kset
+     * 단어 S와 정수 i가 주어졌을 때, S의 i번째 글자를 출력
+     * 하는 프로그램 작성
      * */
-    public String solution(String str) {
-        String answer = "";
-
-        for(int i = 0; i < str.length(); i++) {
-            char c = str.charAt(i);
-            boolean flag = false;
-            for(int j = 0; j < i; j++){
-                if(c == str.charAt(j)) {
-                    flag = true;
-                    break;
-                }
-            }
-            if(!flag) answer += c;
-        }
-
-        // 리턴
-        return answer;
-    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String s = br.readLine();
+        int i = Integer.parseInt(br.readLine());
+        char ch = s.charAt(i - 1);
+        bw.write(ch);
 
-        Main T = new Main();
-        String str = br.readLine();
-        System.out.println(T.solution(str));
         br.close();
         bw.close();
     }
