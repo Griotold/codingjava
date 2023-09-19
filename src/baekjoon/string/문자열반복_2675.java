@@ -1,11 +1,10 @@
+package baekjoon.string;
+
 import java.io.*;
-import java.util.*;
-public class Main {
-    /**
-     * 문자열 반복 2675
-     *
-     * */
-    public static void main(String[] args) throws IOException {
+import java.util.StringTokenizer;
+
+public class 문자열반복_2675 {
+    public void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
