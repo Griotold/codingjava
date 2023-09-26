@@ -1,6 +1,6 @@
-import java.io.*;
-import java.util.*;
-public class Main {
+package kim.string;
+
+public class 암호_12 {
     public String solution(String str, int N) {
         String answer = "";
         for(int i = 0; i < N; i++) {
@@ -12,13 +12,5 @@ public class Main {
             str = str.substring(7);
         }
         return answer;
-    }
-    public static void main(String[] args) throws IOException {
-        Main T = new Main();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        String str = br.readLine();
-        System.out.println(T.solution(str, N));
-        br.close();
     }
 }
