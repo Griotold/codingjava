@@ -1,6 +1,6 @@
-import java.io.*;
-import java.util.*;
-public class Main {
+package kim.string;
+
+public class 가장짧은문자거리_10 {
     public int[] solution(String str, char t) {
         int len = str.length();
         int[] answer = new int[len];
@@ -24,25 +24,10 @@ public class Main {
                 p = 0;
                 answer[i] = p;
             } else {
-                if(answer[i] > p) {
-                    answer[i] = p;
-                }
+                answer[i] = Math.min(answer[i], p);
             }
             p++;
         }
         return answer;
-    }
-    public static void main(String[] args) throws IOException {
-        Main T = new Main();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        String str = st.nextToken();
-        char t = st.nextToken().charAt(0);
-        int[] answer = T.solution(str, t);
-        for(int x : answer) {
-            System.out.print(x + " ");
-        }
-
-        br.close();
     }
 }
