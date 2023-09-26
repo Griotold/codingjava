@@ -1,35 +1,26 @@
 import java.io.*;
 import java.util.*;
 public class Main {
-    public ArrayList<String> solution(int t, String[] str) {
-        ArrayList<String> answer = new ArrayList<>();
-        for (String x : str) {
-            char[] s = x.toCharArray();
-            int lt = 0, rt = x.length() - 1;
-            while(lt < rt) {
-                char temp = s[lt];
-                s[lt] = s[rt];
-                s[rt] = temp;
-                lt++;
-                rt--;
+    public String solution(String str) {
+        String answer = "YES";
+        str = str.toLowerCase();
+        char[] charArray = str.toCharArray();
+        int lt = 0, rt = str.length() - 1;
+        while(lt < rt) {
+            if(charArray[lt] != charArray[rt]) {
+                answer = "NO";
+                break;
             }
-            String reversed = String.valueOf(s);
-            answer.add(reversed);
+            rt--;
+            lt++;
         }
         return answer;
     }
     public static void main(String[] args) throws IOException {
         Main T = new Main();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine());
-        String[] str = new String[t];
-        for (int i = 0; i < t; i++) {
-            str[i] = br.readLine();
-        }
-        for (String x : T.solution(t, str)) {
-            System.out.println(x);
-        }
-
+        String str = br.readLine();
+        System.out.println(T.solution(str));
 
         br.close();
     }
