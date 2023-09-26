@@ -4,14 +4,33 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * StringBuilder 사용
+ * StringBuilder , 직접 뒤집기
  * */
 public class 단어뒤집기_4 {
+    // StringBuilder
     public ArrayList<String> solution(int n, String[] strings) {
         ArrayList<String> answer = new ArrayList<>();
         for (String x : strings) {
             String temp = new StringBuilder(x).reverse().toString();
             answer.add(temp);
+        }
+        return answer;
+    }
+    // 직접 뒤집기
+    public ArrayList<String> solution2(int t, String[] str) {
+        ArrayList<String> answer = new ArrayList<>();
+        for (String x : str) {
+            char[] s = x.toCharArray();
+            int lt = 0, rt = x.length() - 1;
+            while(lt < rt) {
+                char temp = s[lt];
+                s[lt] = s[rt];
+                s[rt] = temp;
+                lt++;
+                rt--;
+            }
+            String reversed = String.valueOf(s);
+            answer.add(reversed);
         }
         return answer;
     }
