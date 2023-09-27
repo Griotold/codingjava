@@ -1,30 +1,20 @@
 import java.io.*;
 import java.util.*;
 public class Main {
-//    9
-//    32 55 62 20 250 370 200 30 100
-    public ArrayList<Integer> solution(int N, int[] arr) {
-        ArrayList<Integer> answer = new ArrayList<>();
+//    10
+//    1 0 1 1 1 0 0 1 1 0
+    public int solution(int N, int[] arr) {
+        int answer = 0;
+        int count = 0;
         for(int i = 0; i < N; i++) {
-            int tmp = arr[i];
-            int reversed = 0;
-            boolean flag = false;
-            while(tmp > 0) {
-                int remain = tmp % 10;
-                tmp /= 10;
-                reversed = reversed * 10 + remain;
-            }
-            for(int j = 2; j * j <= reversed; j++) {
-                if(reversed % j == 0) {
-                    flag = true;
-                    break;
-                }
-            }
-            if(!flag && reversed != 1) {
-                answer.add(reversed);
+            int result = arr[i];
+            if(result == 1) {
+                answer += 1 + count;
+                count++;
+            } else {
+                count = 0;
             }
         }
-
         return answer;
     }
     public static void main(String[] args) throws IOException {
@@ -36,9 +26,7 @@ public class Main {
         for(int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
-        for(int x: T.solution(N, arr)) {
-            System.out.print(x + " ");
-        }
+        System.out.println(T.solution(N, arr));
         br.close();
     }
 }
