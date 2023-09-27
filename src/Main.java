@@ -3,52 +3,31 @@ import java.util.*;
 public class Main {
     /**
      * 5
-     * 10 13 10 12 15
-     * 12 39 30 23 11
-     * 11 25 50 53 15
-     * 19 27 29 37 27
-     * 19 13 30 13 19
+     * 5 3 7 2 3
+     * 3 7 1 6 1
+     * 7 2 5 3 4
+     * 4 3 6 4 1
+     * 8 7 3 5 2
      * */
-    static int[][] map;
     public int solution(int N, int[][] arr) {
-        int answer = 0;
-        // 행
-        for(int i = 0; i < N; i++) {
-            int tmp = 0;
-            for(int j = 0; j < N; j++) {
-                tmp += map[i][j];
-            }
-            if(tmp > answer) answer = tmp;
-        }
-        // 열
-        for(int i = 0; i < N; i++) {
-            int tmp = 0;
-            for(int j = 0; j < N; j++) {
-                tmp += map[j][i];
-            }
-            if(tmp > answer) answer = tmp;
-        }
-        int tmp = 0;
-        for(int i = 0; i < N; i++) {
-            tmp += map[i][i];
-        }
-        if(tmp > answer) answer = tmp;
-
-        tmp = 0;
-        for(int i = 0; i < N; i++) {
-            tmp += map[i][N-i-1];
-        }
-        if(tmp > answer) answer = tmp;
-        return answer;
+       int answer = 0;
+       for(int i = 1; i <= N; i++) {
+           for(int j = 1; j <= N; j++) {
+               int now = arr[i][j];
+               if(now > arr[i][j+1] && now > arr[i+1][j] && now > arr[i-1][j] && now > arr[i][j-1])
+                   answer++;
+           }
+       }
+       return answer;
     }
     public static void main(String[] args) throws IOException {
         Main T = new Main();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        map = new int[N][N];
-        for(int i = 0; i < N; i++) {
+        int[][] map = new int[N + 2][N + 2];
+        for(int i = 1; i <= N; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            for(int j = 0; j < N; j++) {
+            for(int j = 1; j <= N; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
