@@ -1,12 +1,16 @@
 import java.io.*;
 import java.util.*;
 public class Main {
-    public ArrayList<Integer> solution(int N, int[] arr) {
-        ArrayList<Integer> answer = new ArrayList<>();
-        answer.add(arr[0]);
-        for(int i = 1; i < N; i++){
-            if(arr[i] > arr[i - 1])
-                answer.add(arr[i]);
+//    8
+//            130 135 148 140 145 150 150 153
+    public int solution(int N, int[] arr) {
+        int answer = 0;
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < arr.length; i++){
+            if (arr[i] > max) {
+                max = arr[i];
+                answer++;
+            }
         }
         return  answer;
 
@@ -20,9 +24,7 @@ public class Main {
         for(int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
-        for (int x : T.solution(N, arr)) {
-            System.out.print(x + " ");
-        }
+        System.out.println(T.solution(N, arr));
         br.close();
     }
 }
