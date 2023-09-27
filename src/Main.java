@@ -1,19 +1,16 @@
 import java.io.*;
 import java.util.*;
 public class Main {
-//    10
-//    1 0 1 1 1 0 0 1 1 0
-    public int solution(int N, int[] arr) {
-        int answer = 0;
-        int count = 0;
+//    5
+//    87 89 92 100 76
+    public int[] solution(int N, int[] arr) {
+        int[] answer = new int[N];
         for(int i = 0; i < N; i++) {
-            int result = arr[i];
-            if(result == 1) {
-                answer += 1 + count;
-                count++;
-            } else {
-                count = 0;
+            int count = 1;
+            for(int j = 0; j < N; j++) {
+                if(arr[j] > arr[i]) count++;
             }
+            answer[i] = count;
         }
         return answer;
     }
@@ -26,7 +23,9 @@ public class Main {
         for(int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
-        System.out.println(T.solution(N, arr));
+        for(int x : T.solution(N, arr)) {
+            System.out.print(x + " ");
+        }
         br.close();
     }
 }
