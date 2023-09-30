@@ -3,7 +3,7 @@ package kim.string;
 public class 문자열압축_11 {
     public String solution(String str) {
         String answer = "";
-        str = str + " ";
+//        str = str + " ";
         answer += str.charAt(0);
         int count = 1;
         for(int i = 1; i < str.length(); i++) {
