@@ -2,14 +2,13 @@ import java.io.*;
 import java.util.*;
 public class Main {
     public int solution(int N) {
-        int answer = 0, sum = 0, lt = 1;
-        for(int rt = 1; rt < N; rt++) {
-            sum += rt;
-            if(sum == N) answer++;
-            while(sum >= N) {
-                sum -= lt++;
-                if(sum == N) answer++;
+        int answer = 0, sum;
+        for(int i = 2; i < N; i++) {
+            sum = 0;
+            for(int j = 1; j <= i; j++) {
+                sum += j;
             }
+            if(N >= sum && (N - sum) % i == 0) answer++;
         }
         return answer;
     }
