@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 
 public class 가장짧은문자거리_10 {
     public int[] solution(String str, char t) {

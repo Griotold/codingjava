@@ -1,4 +1,4 @@
-package kim.array;
+package kim.ch2_array;
 
 public class 봉우리_10 {
     public int solution(int N, int[][] arr) {

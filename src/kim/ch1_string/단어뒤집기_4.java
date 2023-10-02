@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 
 import java.util.ArrayList;
 import java.util.Scanner;

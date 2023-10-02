@@ -1,4 +1,4 @@
-package kim.array;
+package kim.ch2_array;
 
 public class 임시반장구하기_11 {
     public int solution(int N, int[][] arr) {

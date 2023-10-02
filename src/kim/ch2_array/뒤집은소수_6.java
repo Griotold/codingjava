@@ -1,4 +1,4 @@
-package kim.array;
+package kim.ch2_array;
 
 import java.util.ArrayList;
 

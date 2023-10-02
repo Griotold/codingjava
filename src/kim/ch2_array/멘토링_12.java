@@ -1,4 +1,4 @@
-package kim.array;
+package kim.ch2_array;
 
 public class 멘토링_12 {
     public int solution(int N, int M, int[][] arr) {

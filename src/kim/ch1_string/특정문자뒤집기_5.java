@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 
 public class 특정문자뒤집기_5 {
     /**

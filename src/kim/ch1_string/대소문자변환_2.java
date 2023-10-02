@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 
 public class 대소문자변환_2 {
 

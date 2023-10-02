@@ -1,4 +1,4 @@
-package kim.array;
+package kim.ch2_array;
 
 public class 피보나치수열_4 {
     /**

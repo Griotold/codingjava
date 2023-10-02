@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 
 public class 문자열압축_11 {
     public String solution(String str) {

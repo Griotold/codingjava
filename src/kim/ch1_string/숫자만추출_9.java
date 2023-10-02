@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 
 public class 숫자만추출_9 {
     public int solution(String str) {

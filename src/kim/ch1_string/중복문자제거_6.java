@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 /**
  * 중복문자제거
  * */

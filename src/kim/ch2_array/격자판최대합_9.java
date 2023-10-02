@@ -1,4 +1,4 @@
-package kim.array;
+package kim.ch2_array;
 
 public class 격자판최대합_9 {
     /**

@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 
 public class 유효한팰린드롬_8 {
     public String solution(String str) {

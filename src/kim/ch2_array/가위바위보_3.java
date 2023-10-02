@@ -1,4 +1,4 @@
-package kim.array;
+package kim.ch2_array;
 
 public class 가위바위보_3 {
     /**

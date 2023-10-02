@@ -1,4 +1,4 @@
-package kim.array;
+package kim.ch2_array;
 
 public class 점수계산_7 {
     public int solution(int N, int[] arr) {

@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 
 public class 암호_12 {
     public String solution(String str, int N) {

@@ -1,4 +1,4 @@
-package kim.array;
+package kim.ch2_array;
 
 public class 소수_에라토스테네스체_5 {
     /**

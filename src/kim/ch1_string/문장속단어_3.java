@@ -1,4 +1,4 @@
-package kim.string;
+package kim.ch1_string;
 
 public class 문장속단어_3 {
 
