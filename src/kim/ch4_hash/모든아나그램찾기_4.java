@@ -1,8 +1,8 @@
-import java.io.*;
-import java.util.*;
-public class Main {
-    // bacaAacba
-    // abc
+package kim.ch4_hash;
+
+import java.util.HashMap;
+
+public class 모든아나그램찾기_4 {
     public int solution(String str1, String str2) {
         int answer = 0;
         int len1 = str1.length();
@@ -35,13 +35,5 @@ public class Main {
             lt++;
         }
         return answer;
-    }
-    public static void main(String[] args) throws IOException {
-        Main T = new Main();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String str1 = br.readLine();
-        String str2 = br.readLine();
-        System.out.println(T.solution(str1, str2));
-        br.close();
     }
 }
