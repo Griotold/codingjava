@@ -1,47 +1,37 @@
 import java.io.*;
 import java.util.*;
 public class Main {
-    // bacaAacba
-    // abc
-    public int solution(String str1, String str2) {
-        int answer = 0;
-        int len1 = str1.length();
-        int len2 = str2.length(); // 3
-        HashMap<Character, Integer> str1Map = new HashMap<>();
-        HashMap<Character, Integer> str2Map = new HashMap<>();
-
-        // 1. str2Map 부터 초기화
-        for(int i = 0; i < len2; i++) {
-            char ch = str2.charAt(i);
-            str2Map.put(ch, str2Map.getOrDefault(ch, 0) + 1);
+    // 10 3
+    // 13 15 34 23 45 65 33 11 26 42 --> 143
+    public int solution(int N, int K, int[] arr) {
+        int answer = -1;
+        TreeSet<Integer> set = new TreeSet<>(Collections.reverseOrder());
+        for(int i = 0; i < N; i++) {
+            for(int j = i + 1; j < N; j++) {
+                for(int s = j + 1; s < N; s++) {
+                    set.add(arr[i] + arr[j] + arr[s]);
+                }
+            }
         }
-
-        // 2. str1Map을 Sliding window 돌리기 직전으로 세팅
-        for(int i = 0; i < len2 - 1; i++) {
-            char ch = str1.charAt(i);
-            str1Map.put(ch, str1Map.getOrDefault(ch, 0) + 1);
-        }
-
-        // 3.
-        int lt = 0;
-        for(int rt = len2 - 1; rt < len1; rt++) {
-            char ch = str1.charAt(rt);
-            str1Map.put(ch, str1Map.getOrDefault(ch, 0) + 1);
-            // str1Map 과 str2Map이 같니?
-            if(str1Map.equals(str2Map)) answer++;
-            char pre = str1.charAt(lt);
-            str1Map.put(pre, str1Map.get(pre) - 1);
-            if(str1Map.get(pre) == 0) str1Map.remove(pre);
-            lt++;
+        int cnt = 0;
+        for(int x : set) {
+            cnt++;
+            if(cnt == K) return x;
         }
         return answer;
     }
     public static void main(String[] args) throws IOException {
         Main T = new Main();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String str1 = br.readLine();
-        String str2 = br.readLine();
-        System.out.println(T.solution(str1, str2));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+        int[] arr = new int[N];
+        st = new StringTokenizer(br.readLine());
+        for(int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+        System.out.println(T.solution(N, K, arr));
         br.close();
     }
 }
