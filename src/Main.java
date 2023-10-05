@@ -1,18 +1,20 @@
 import java.io.*;
 import java.util.*;
 public class Main {
-    // (()(()))(() --> NO
+    // (A(BC)D)EF(G(H)(IJ)K)LM(N) --> EFLM
     public String solution(String str) {
-        String answer = "YES";
+        String answer = "";
         Stack<Character> stack = new Stack<>();
-        for(char ch : str.toCharArray()) {
-            if(ch == '(') stack.push(ch);
-            else {
-                if(stack.empty()) return "NO";
-                else stack.pop();
-            }
+        for(char x : str.toCharArray()){
+            if (x == ')') {
+                while(stack.pop() != '(');
+            } else stack.push(x);
         }
-        if (!stack.empty()) answer = "NO";
+
+        // for(char x : stack) answer += x;
+        for(int i = 0; i < stack.size(); i++){
+            answer += stack.get(i);
+        }
         return answer;
     }
     public static void main(String[] args) throws IOException {
