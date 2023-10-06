@@ -1,7 +1,12 @@
-import java.io.*;
-import java.util.*;
-public class Main {
-    // 352+*9-  --> 12
+package kim.ch5_stack_queue;
+
+import java.util.Stack;
+
+public class 후위식연산_4 {
+
+    /**
+     * 내 풀이
+     * */
     public int solution(String str) {
         int answer = 0;
         Stack<Integer> stack = new Stack<>();
@@ -30,11 +35,25 @@ public class Main {
         answer = stack.pop();
         return answer;
     }
-    public static void main(String[] args) throws IOException {
-        Main T = new Main();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String str = br.readLine();
-        System.out.println(T.solution(str));
-        br.close();
+
+    /**
+     * 강사님 풀이 - 더 깔끔함
+     */
+    public int sol2(String str) {
+        int answer = 0;
+        Stack<Integer> stack = new Stack<>();
+        for (char x : str.toCharArray()) {
+            if(Character.isDigit(x)) stack.push(x - 48);
+            else {
+                int rt = stack.pop();
+                int lt = stack.pop();
+                if(x == '+') stack.push(lt + rt);
+                else if(x == '-') stack.push(lt - rt);
+                else if(x == '*') stack.push(lt * rt);
+                else if(x == '/') stack.push(lt / rt);
+            }
+        }
+        answer = stack.get(0);
+        return answer;
     }
 }
