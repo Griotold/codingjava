@@ -1,15 +1,21 @@
 import java.io.*;
 import java.util.*;
 public class Main {
-    // 8
-    // 20 25 52 30 39 33 43 33 --> D
-    public String sol(int N, int[] arr) {
-        // 1. TreeSet에 넣고
-        TreeSet<Integer> set = new TreeSet<>();
-        for (int x : arr) set.add(x);
-        // 크기가 배열보다 작으면 D
-        if (set.size() == arr.length) return "U";
-        else return "D";
+    // 9
+    // 120 125 152 130 135 135 143 127 160 --> 3 8
+    public int[] sol(int N, int[] arr) {
+        int[] answer = new int[2];
+        int i;
+        for(i = 0; i < N - 1; i++) {
+            if(arr[i] > arr[i + 1]) {
+                answer[0] = i + 1;
+                break;
+            }
+        }
+        for(int j = i + 1; j < N; j++) {
+            if(arr[j] < arr[j - 1]) answer[1] = j + 1;
+        }
+        return answer;
     }
 
     public static void main(String[] args) throws IOException {
@@ -19,7 +25,7 @@ public class Main {
         int[] arr = new int[N];
         StringTokenizer st = new StringTokenizer(br.readLine());
         for(int i = 0; i < N; i++) arr[i] = Integer.parseInt(st.nextToken());
-        System.out.println(T.sol(N, arr));
+        for (int x : T.sol(N, arr)) System.out.print(x + " ");
         br.close();
     }
 }
