@@ -1,10 +1,11 @@
-import java.io.*;
-import java.util.*;
-
-
-public class Main {
-    // 9 3
-    // 1 2 3 4 5 6 7 8 9 -> 17
+package kim.ch6_sort_binary_search_decision;
+/**
+ * 결정 알고리즘 = 이분 검색 심화
+ * */
+public class 뮤직비디오_결정알고리즘_9 {
+    /**
+     * lt, rt 세팅은 스트림 문법으로 간편하게 할 수도 있다.
+     * */
     public int sol(int N, int M, int[] arr) {
         int answer = 0, lt = 0, rt = 0;
         // 1. lt, rt 값 세팅
@@ -25,7 +26,9 @@ public class Main {
         }
         return answer;
     }
-
+    /**
+     * 강사님이 짠 메서드
+     * */
     private int count(int[] arr, int capacity) {
         int cnt = 1, sum = 0; // dvd 장수, 곡들의 합
         for (int x : arr) {
@@ -36,7 +39,9 @@ public class Main {
         }
         return cnt;
     }
-
+    /**
+     * 내가 짠 메서드
+     * */
     private boolean isPossible(int mid, int M, int[] arr) {
         int count = 0, sum = 0;
         for(int i = 0; i < arr.length; i++) {
@@ -48,18 +53,5 @@ public class Main {
         }
         if(count >= M) return false;
         return true;
-    }
-
-    public static void main(String[] args) throws IOException {
-        Main T = new Main();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        int[] arr = new int[N];
-        st = new StringTokenizer(br.readLine());
-        for(int i = 0; i < N; i++) arr[i] = Integer.parseInt(st.nextToken());
-        System.out.println(T.sol(N, M, arr));
-        br.close();
     }
 }
