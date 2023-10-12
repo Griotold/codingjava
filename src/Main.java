@@ -3,14 +3,16 @@ import java.util.*;
 
 
 public class Main {
-    // 3 -> 1 2 3
+    // 11 -> 1011
     public void sol(int N) {
         if(N == 1) {
-            System.out.print(N + " ");
-            return;
+            System.out.print(N);
+//            return;
         } else {
-            sol(N - 1);
-            System.out.print(N + " ");
+            int rest = N % 2;
+            int quotient = N / 2;
+            sol(quotient);
+            System.out.print(rest);
         }
     }
 
