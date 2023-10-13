@@ -1,8 +1,28 @@
 package kim.ch6_sort_binary_search_decision;
+
+import java.util.Arrays;
+
 /**
  * 결정 알고리즘 = 이분 검색 심화
  * */
 public class 뮤직비디오_결정알고리즘_9 {
+    /**
+     * 강사님 풀이
+     */
+    public int solByTeacher(int n, int m, int[] arr) {
+        int answer = 0;
+        int rt = Arrays.stream(arr).sum();
+        int lt = Arrays.stream(arr).max().getAsInt();
+        while(lt<=rt) {
+            int mid = (lt + rt) / 2;
+            if(count(arr, mid) <= m){ // 2장으로 담을 수 있다면 3장은 무조건 가능한 거다
+                answer = mid;
+                rt = mid - 1;
+            } else lt = mid + 1;
+        }
+        return answer;
+    }
+
     /**
      * lt, rt 세팅은 스트림 문법으로 간편하게 할 수도 있다.
      * */
