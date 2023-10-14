@@ -1,46 +1,40 @@
 import java.io.*;
 import java.util.*;
-public class Main {
-    // 9 3
-    // 1 2 3 4 5 6 7 8 9 --> 17
-    public int sol(int N, int M, int[] arr) {
-        int answer = 0;
-        int rt = Arrays.stream(arr).sum();
-        int lt = Arrays.stream(arr).max().getAsInt();
-        while(lt<=rt) {
-            int mid = (lt + rt) / 2;
-            if(count(mid, arr) <= M) {
-                answer = mid;
-                rt = mid - 1;
-            } else lt = mid + 1;
-        }
+class Node {
+    int data;
+    Node lt;
+    Node rt;
 
-        return answer;
+    public Node(int data) {
+        this.data = data;
+        lt = null;
+        rt = null;
     }
-
-    private int count(int size, int[] arr) {
-        int cnt = 1;
-        int sum = 0;
-        for(int i = 0; i < arr.length; i++) {
-            if(sum + arr[i] > size) {
-                cnt++;
-                sum = arr[i];
-            } else sum += arr[i];
+}
+public class Main {
+    Node root;
+    public void DFS(Node root) {
+        if(root == null) return;
+        else{
+            System.out.print(root.data + " ");
+            DFS(root.lt);
+            DFS(root.rt);
         }
-        return cnt;
     }
 
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        int[] arr = new int[N];
-        st = new StringTokenizer(br.readLine());
-        for(int i = 0 ; i < N; i++) arr[i] = Integer.parseInt(st.nextToken());
-        System.out.println(T.sol(N, M, arr));
-
-        br.close();
+//        Main T = new Main();
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        T.DFS(1);
+//        br.close();
+          Main tree = new Main();
+          tree.root = new Node(1);
+          tree.root.lt = new Node(2);
+          tree.root.rt = new Node(3);
+          tree.root.lt.lt = new Node(4);
+          tree.root.lt.rt = new Node(5);
+          tree.root.rt.lt = new Node(6);
+          tree.root.rt.rt = new Node(7);
+          tree.DFS(tree.root);
     }
 }
