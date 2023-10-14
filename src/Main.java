@@ -1,40 +1,31 @@
 import java.io.*;
 import java.util.*;
-class Node {
-    int data;
-    Node lt;
-    Node rt;
 
-    public Node(int data) {
-        this.data = data;
-        lt = null;
-        rt = null;
-    }
-}
 public class Main {
-    Node root;
-    public void DFS(Node root) {
-        if(root == null) return;
-        else{
-            System.out.print(root.data + " ");
-            DFS(root.lt);
-            DFS(root.rt);
+    static int n;
+    static int[] ch;
+
+    public void DFS(int L) {
+        if(L == n + 1) {
+            for(int i = 1; i <= n; i++) {
+                if(ch[i] == 1) System.out.print(i + " ");
+            }
+            System.out.println();
+        } else{
+            ch[L] = 1;
+            DFS(L + 1);
+            ch[L] = 0;
+            DFS(L + 1);
         }
     }
 
     public static void main(String[] args) throws IOException {
-//        Main T = new Main();
+        Main T = new Main();
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        T.DFS(1);
+        n = 3;
+        ch = new int[n + 1];
+        T.DFS(1);
 //        br.close();
-          Main tree = new Main();
-          tree.root = new Node(1);
-          tree.root.lt = new Node(2);
-          tree.root.rt = new Node(3);
-          tree.root.lt.lt = new Node(4);
-          tree.root.lt.rt = new Node(5);
-          tree.root.rt.lt = new Node(6);
-          tree.root.rt.rt = new Node(7);
-          tree.DFS(tree.root);
+
     }
 }
