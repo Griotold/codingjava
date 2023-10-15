@@ -1,47 +1,39 @@
 import java.io.*;
 import java.util.*;
-class Node {
-    int data;
-    Node lt;
-    Node rt;
 
-    public Node(int data) {
-        this.data = data;
-        lt=rt=null;
-    }
-}
 public class Main {
-    Node root;
-    public void BFS(Node node) {
-        Queue<Node> Q = new LinkedList<>();
-        Q.offer(node);
+    // 5 14 -> 3
+    int[] range = {-1, 1, 5};
+    int[] ch = new int[10001];
+    Queue<Integer> Q = new LinkedList<>();
+    public int BFS(int S, int E) {
+        ch[S] = 1;
+        Q.offer(S);
         int L = 0;
-        while(!Q.isEmpty()) {
+        while (!Q.isEmpty()) {
             int len = Q.size();
-            System.out.println("L = " + L);
             for(int i = 0; i < len; i++) {
-                Node now = Q.poll();
-                System.out.print(now.data+ " ");
-                if(now.lt != null) Q.offer(now.lt);
-                if(now.rt != null) Q.offer(now.rt);
+                int x = Q.poll();
+                for(int j = 0; j < 3; j++) {
+                    int nx = x + range[j];
+                    if(nx == E) return L + 1;
+                    if(nx >= 1 && nx <= 10000 && ch[nx] == 0) {
+                        ch[nx] = 1;
+                        Q.offer(nx);
+                    }
+                }
             }
             L++;
-            System.out.println();
         }
+        return 0;
     }
-
     public static void main(String[] args) throws IOException {
         Main T = new Main();
-        T.root = new Node(1);
-        T.root.lt = new Node(2);
-        T.root.rt = new Node(3);
-        T.root.lt.lt = new Node(4);
-        T.root.lt.rt = new Node(5);
-        T.root.rt.lt = new Node(6);
-        T.root.rt.rt = new Node(7);
-        T.BFS(T.root);
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        br.close();
-
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int S = Integer.parseInt(st.nextToken());
+        int E = Integer.parseInt(st.nextToken());
+        System.out.println(T.BFS(S, E));
+        br.close();
     }
 }
