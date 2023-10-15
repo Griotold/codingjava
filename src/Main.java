@@ -5,12 +5,23 @@ import java.util.*;
 
 public class Main {
     Node root;
-    public int DFS(int L, Node node) {
-        if (node.lt == null && node.rt == null) {
-            return L;
-        } else {
-            return Math.min(DFS(L + 1, node.lt), DFS(L+1, node.rt));
+    public int BFS(Node node) {
+        Queue<Node> Q = new LinkedList<>();
+        Q.offer(node);
+        int L = 0;
+        while(!Q.isEmpty()) {
+            int len = Q.size();
+            for(int i = 0; i < len; i++) {
+                Node now = Q.poll();
+                if(now.lt == null && now.rt == null){
+                    return L;
+                }
+                if(now.lt != null) Q.offer(now.lt);
+                if(now.rt != null) Q.offer(now.rt);
+            }
+            L++;
         }
+        return 0;
     }
     public static void main(String[] args) throws IOException {
         Main T = new Main();
@@ -19,7 +30,7 @@ public class Main {
         T.root.rt = new Node(3);
         T.root.lt.lt = new Node(4);
         T.root.lt.rt = new Node(5);
-        System.out.println(T.DFS(0, T.root));
+        System.out.println(T.BFS(T.root));
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        br.close();
     }
