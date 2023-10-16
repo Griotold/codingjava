@@ -1,17 +1,17 @@
-import java.io.*;
-import java.util.*;
+package kim.ch7_recursive;
 
-public class Main {
-    // 6 9
-    //1 3
-    //1 4
-    //2 1
-    //2 5
-    //3 4
-    //4 5
-    //4 6
-    //6 2
-    //6 5
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+/**
+ * 기존 방식 - 레벨을 활용
+ * 인접 행렬 활용
+ * */
+public class 그래프최단거리_레벨_14 {
     static int N, M, count = 0;
     static int[][] graph;
     static int[] ch;
@@ -36,8 +36,9 @@ public class Main {
         }
         return 0;
     }
+
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        그래프최단거리_레벨_14 T = new 그래프최단거리_레벨_14();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
