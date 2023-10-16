@@ -1,11 +1,18 @@
-import java.io.*;
-import java.util.*;
+package kim.ch7_recursive;
 
-public class Main {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class 경로탐색_인접행렬_12 {
+
     static int N, M, count;
     static int[][] graph;
     static int[] ch;
     static ArrayList<Integer> answer = new ArrayList<>();
+
     public void DFS(int node) {
         ch[node] = 1;
         answer.add(node);
@@ -23,8 +30,9 @@ public class Main {
             }
         }
     }
+
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        경로탐색_인접행렬_12 T = new 경로탐색_인접행렬_12();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
