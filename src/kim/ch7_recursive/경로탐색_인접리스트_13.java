@@ -1,7 +1,12 @@
-import java.io.*;
-import java.util.*;
+package kim.ch7_recursive;
 
-public class Main {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class 경로탐색_인접리스트_13 {
     static int N, M, count = 0;
     static ArrayList<ArrayList<Integer>> graph;
     static int[] ch;
@@ -17,8 +22,9 @@ public class Main {
             }
         }
     }
+
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        경로탐색_인접리스트_13 T = new 경로탐색_인접리스트_13();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
