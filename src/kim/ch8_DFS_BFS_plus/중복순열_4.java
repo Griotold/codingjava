@@ -1,8 +1,11 @@
-import java.io.*;
-import java.util.*;
+package kim.ch8_DFS_BFS_plus;
 
-public class Main {
-    // 3 2 -> 중복순열
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 중복순열_4 {
     static int N, M;
     static int[] permutation;
 
@@ -18,7 +21,7 @@ public class Main {
         }
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        중복순열_4 T = new 중복순열_4();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
