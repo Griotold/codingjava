@@ -1,20 +1,15 @@
-import java.io.*;
-import java.util.*;
-class Problem {
-    int point;
-    int time;
-    public Problem(int p, int t) {
-        point = p;
-        time = t;
-    }
-}
-public class Main {
-    // 5 20
-    //10 5
-    //25 12
-    //15 8
-    //6 3
-    //7 4 --> 41
+package kim.ch8_DFS_BFS_plus;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+/**
+ * 클래스를 하나 만들어서 사용하는게 나아보인다.
+ * 점수 따로, 시간 따로 배열 만드는건 별로인 듯
+ * */
+public class 최대점수구하기_3 {
     static int N, M;
     static int answer = Integer.MIN_VALUE;
     static ArrayList<Problem> list;
@@ -29,7 +24,7 @@ public class Main {
 
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        최대점수구하기_3 T = new 최대점수구하기_3();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
@@ -44,5 +39,13 @@ public class Main {
         T.DFS(0, 0, 0);
         System.out.println(answer);
         br.close();
+    }
+}
+class Problem {
+    int point;
+    int time;
+    public Problem(int p, int t) {
+        point = p;
+        time = t;
     }
 }
