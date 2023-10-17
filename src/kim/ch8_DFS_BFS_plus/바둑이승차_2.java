@@ -1,13 +1,12 @@
-import java.io.*;
-import java.util.*;
+package kim.ch8_DFS_BFS_plus;
 
-public class Main {
-    // 259 5
-    //81
-    //58
-    //42
-    //33
-    //61
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 바둑이승차_2 {
+    // static int answer = Integer.MIN_VALUE;
     static int C, N, answer;
     static int[] arr;
     public void DFS(int L, int sum) {
@@ -19,8 +18,20 @@ public class Main {
             DFS(L + 1, sum);
         }
     }
+    /**
+     * 다른 풀이 - 거의 같음
+     * */
+    public void DFSByTeacher(int L, int sum) {
+        if(sum < C) return;
+        if (L == N) {
+            answer = Math.max(answer, sum);
+        } else {
+            DFS(L + 1, sum + arr[L]);
+            DFS(L + 1, sum);
+        }
+    }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        바둑이승차_2 T = new 바둑이승차_2();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         C = Integer.parseInt(st.nextToken());
