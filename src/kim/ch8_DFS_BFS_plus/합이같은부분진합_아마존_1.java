@@ -1,9 +1,11 @@
-import java.io.*;
-import java.util.*;
+package kim.ch8_DFS_BFS_plus;
 
-public class Main {
-    // 6
-    // 1 3 5 6 7 10
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 합이같은부분진합_아마존_1 {
     static String answer = "NO";
     static int N, total;
     static boolean flag = false;
@@ -23,7 +25,7 @@ public class Main {
         }
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        합이같은부분진합_아마존_1 T = new 합이같은부분진합_아마존_1();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         arr = new int[N];
