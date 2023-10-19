@@ -1,20 +1,26 @@
-import java.io.*;
-import java.util.*;
+package kim.ch8_DFS_BFS_plus;
 
-public class Main {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 조합경우의수_메모이제이션_7 {
+
     // 5 3 --> 10
     static int N, M;
     static int[][] dy;
 
     public int DFS(int n, int r) {
-        if(dy[n][r] != 0) return dy[n][r];
-        if(r == 0 || n == r) return dy[n][r] = 1;
+        if (dy[n][r] != 0) return dy[n][r];
+        if (r == 0 || n == r) return dy[n][r] = 1;
         else {
             return dy[n][r] = DFS(n - 1, r - 1) + DFS(n - 1, r);
         }
     }
+
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        조합경우의수_메모이제이션_7 T = new 조합경우의수_메모이제이션_7();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
@@ -24,3 +30,4 @@ public class Main {
         br.close();
     }
 }
+
