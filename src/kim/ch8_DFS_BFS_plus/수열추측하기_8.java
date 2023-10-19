@@ -1,8 +1,11 @@
-import java.io.*;
-import java.util.*;
+package kim.ch8_DFS_BFS_plus;
 
-public class Main {
-    // 4 16 -> 3 1 2 4
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 수열추측하기_8 {
     static int N, F;
     static int[] b, p, ch; // 이항계수 배열, 순열 배열, 체크 배열
     static boolean flag = false;
@@ -34,7 +37,7 @@ public class Main {
 
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        수열추측하기_8 T = new 수열추측하기_8();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
