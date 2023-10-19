@@ -1,10 +1,13 @@
-import kim.ch8_DFS_BFS_plus.수열추측하기_8;
+package kim.ch8_DFS_BFS_plus;
 
-import java.io.*;
-import java.util.*;
-
-public class Main {
-    // 4 2
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+/**
+ * 재귀를 활용한 조합은 암기하는게 좋다
+ * */
+public class 조합구하기_9 {
     static int N, M;
     static int[] combi;
 
@@ -20,7 +23,7 @@ public class Main {
         }
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        조합구하기_9 T = new 조합구하기_9();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
