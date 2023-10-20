@@ -1,22 +1,13 @@
-import java.io.*;
-import java.util.*;
-class Point {
-    int y;
-    int x;
-    public Point(int y, int x) {
-        this.y = y;
-        this.x = x;
-    }
-}
+package kim.ch8_DFS_BFS_plus;
 
-public class Main {
-    // 0 0 0 0 0 0 0 --> 12
-    //0 1 1 1 1 1 0
-    //0 0 0 1 0 0 0
-    //1 1 0 1 0 1 1
-    //1 1 0 1 0 0 0
-    //1 0 0 0 1 0 0
-    //1 0 1 0 0 0 0
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class 미로의최단거리_11 {
     static int[][] map = new int[8][8];
     static int[][] dis = new int[8][8];
     static int[] dy = {-1, 1, 0, 0};
@@ -32,7 +23,7 @@ public class Main {
                 int ny = point.y + dy[i];
                 int nx = point.x + dx[i];
                 if(ny >= 1 && ny <= 7 && nx >= 1 && nx <= 7 &&
-                map[ny][nx] == 0) {
+                        map[ny][nx] == 0) {
                     map[ny][nx] = 1;
                     dis[ny][nx] = dis[point.y][point.x] + 1;
                     Q.offer(new Point(ny, nx));
@@ -42,7 +33,7 @@ public class Main {
 
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        미로의최단거리_11 T = new 미로의최단거리_11();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         for(int i = 1; i <= 7; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -54,5 +45,13 @@ public class Main {
         if(dis[7][7] == 0) System.out.println(-1);
         else System.out.println(dis[7][7]);
         br.close();
+    }
+}
+class Point {
+    int y;
+    int x;
+    public Point(int y, int x) {
+        this.y = y;
+        this.x = x;
     }
 }
