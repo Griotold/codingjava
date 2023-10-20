@@ -1,5 +1,6 @@
 package kim.ch8_DFS_BFS_plus;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,11 +48,4 @@ public class 미로의최단거리_11 {
         br.close();
     }
 }
-class Point {
-    int y;
-    int x;
-    public Point(int y, int x) {
-        this.y = y;
-        this.x = x;
-    }
-}
+

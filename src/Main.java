@@ -1,40 +1,36 @@
+import kim.ch8_DFS_BFS_plus.Point;
+
 import java.io.*;
 import java.util.*;
-class Point {
-    int y;
-    int x;
-    public Point(int y, int x) {
-        this.y = y;
-        this.x = x;
-    }
-}
+
 
 public class Main {
-    // 0 0 0 0 0 0 0 --> 12
-    //0 1 1 1 1 1 0
-    //0 0 0 1 0 0 0
-    //1 1 0 1 0 1 1
-    //1 1 0 1 0 0 0
-    //1 0 0 0 1 0 0
-    //1 0 1 0 0 0 0
-    static int[][] map = new int[8][8];
-    static int[][] dis = new int[8][8];
+    // 6 4
+    //0 0 -1 0 0 0
+    //0 0 1 0 -1 0
+    //0 0 -1 0 0 0
+    //0 0 0 0 -1 1 --> 4
+    static final int MAX = 1000 + 10;
+    static int N, M, answer;
+    static int[][] map = new int[MAX][MAX];
+    static int[][] ch = new int[MAX][MAX];
+    static int[][] dis = new int[MAX][MAX];
     static int[] dy = {-1, 1, 0, 0};
     static int[] dx = {0, 0, -1, 1};
 
     public void BFS(int y, int x) {
         Queue<Point> Q = new LinkedList<>();
         Q.offer(new Point(y, x));
-        map[y][x] = 1;
-        while (!Q.isEmpty()) {
-            Point point = Q.poll();
-            for(int i = 0; i < 4; i++) {
-                int ny = point.y + dy[i];
-                int nx = point.x + dx[i];
-                if(ny >= 1 && ny <= 7 && nx >= 1 && nx <= 7 &&
-                map[ny][nx] == 0) {
-                    map[ny][nx] = 1;
-                    dis[ny][nx] = dis[point.y][point.x] + 1;
+        ch[y][x] = 1;
+        while(!Q.isEmpty()) {
+            Point tmp = Q.poll();
+            for (int i = 0; i < 4; i++) {
+                int ny = tmp.y + dy[i];
+                int nx = tmp.x + dx[i];
+                if(ny >= 1 && ny <= N && nx >= 1 && nx <= M &&
+                ch[ny][nx] == 0 && map[ny][nx] == 0) {
+                    ch[ny][nx] = 1;
+                    dis[ny][nx] = Math.min(dis[y][x] + 1, dis[ny][nx]);
                     Q.offer(new Point(ny, nx));
                 }
             }
@@ -44,15 +40,29 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Main T = new Main();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        for(int i = 1; i <= 7; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            for(int j = 1; j <= 7; j++) {
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        M = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        for(int i = 1; i <= N; i++) {
+            st = new StringTokenizer(br.readLine());
+            for(int j = 1; j <= M; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-        T.BFS(1, 1);
-        if(dis[7][7] == 0) System.out.println(-1);
-        else System.out.println(dis[7][7]);
+        for(int i = 1; i <= N; i++) {
+            for(int j = 1; j <= M; j++) {
+                if(map[i][j] == 1) {
+                    T.BFS(i, j);
+                }
+                ch = new int[MAX][MAX];
+            }
+        }
+        for(int i = 1; i <= N; i++) {
+            for(int j = 1; j <= M; j++) {
+                answer = Math.max(dis[i][i], answer);
+            }
+        }
+        System.out.println(answer);
         br.close();
     }
 }
