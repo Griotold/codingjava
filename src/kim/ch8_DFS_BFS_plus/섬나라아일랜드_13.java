@@ -1,16 +1,12 @@
-import java.io.*;
-import java.util.*;
+package kim.ch8_DFS_BFS_plus;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-public class Main {
-    // 7
-    //1 1 0 0 0 1 0
-    //0 1 1 0 1 1 0
-    //0 1 0 0 0 0 0
-    //0 0 0 1 0 1 1
-    //1 1 0 1 1 0 0
-    //1 0 0 0 1 0 0
-    //1 0 1 0 1 0 0 --> 5
+public class 섬나라아일랜드_13 {
+
     static int N, answer;
     static int[][] map;
     static int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1};
@@ -21,14 +17,14 @@ public class Main {
             int ny = y + dy[i];
             int nx = x + dx[i];
             if(ny >= 0 && ny < N && nx >= 0 && nx < N &&
-            map[ny][nx] == 1) {
+                    map[ny][nx] == 1) {
                 map[ny][nx] = 0;
                 DFS(ny, nx);
             }
         }
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        섬나라아일랜드_13 T = new 섬나라아일랜드_13();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         map = new int[N][N];
