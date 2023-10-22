@@ -1,52 +1,49 @@
-import kim.ch8_DFS_BFS_plus.Point;
 
+import kim.ch9_greedy.Player;
 import java.io.*;
 import java.util.*;
 
 
 public class Main {
+    // 5
+    //172 67
+    //183 65
+    //180 70
+    //170 72
+    //181 60 --> 3
+    static int N;
+    static ArrayList<Player> list;
 
-    static int N, M, len, answer = Integer.MAX_VALUE;
-    static int[] combi;
-    static ArrayList<Point> hs, pz;
-    public void DFS(int L, int s) {
-        if (L == M) {
-            int sum = 0; // 도시의 피자 배달 거리
-            for (Point h : hs) {
-                int dis = Integer.MAX_VALUE;
-                for (int i : combi) {
-                    dis = Math.min(dis, Math.abs(h.y - pz.get(i).y) + Math.abs(h.x - pz.get(i).x));
+    public int sol() {
+        int answer = 0;
+        for(int i = 0; i < N; i++) {
+            Player now = list.get(i);
+            boolean flag = true;
+            for(int j = 0 ; j < N; j++) {
+                if(i == j) continue;
+                Player tmp = list.get(j);
+                if(now.height < tmp.height && now.weight < tmp.weight) {
+                    flag = false;
+                    break;
                 }
-                sum += dis;
             }
-            answer = Math.min(answer, sum);
-        } else {
-            for(int i = s; i < len; i++){
-                combi[L] = i;
-                DFS(L + 1, i + 1);
-            }
+            if(flag) answer++;
         }
+        return answer;
     }
+
     public static void main(String[] args) throws IOException {
         Main T = new Main();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        hs = new ArrayList<>();
-        pz = new ArrayList<>();
-        for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < N; j++) {
-                int tmp = Integer.parseInt(st.nextToken());
-                if(tmp == 1) hs.add(new Point(i, j));
-                else if(tmp == 2) pz.add(new Point(i, j));
-            }
+        N = Integer.parseInt(br.readLine());
+        list = new ArrayList<>();
+        for(int i = 0 ; i < N; i++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int h = Integer.parseInt(st.nextToken());
+            int w = Integer.parseInt(st.nextToken());
+            list.add(new Player(h, w));
         }
-        len = pz.size();
-        combi = new int[M];
-        T.DFS(0, 0);
-        System.out.println(answer);
+        System.out.println(T.sol());
         br.close();
     }
 }
