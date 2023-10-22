@@ -1,21 +1,18 @@
+package kim.ch9_greedy;
 
-import kim.ch9_greedy.MeetingTime;
-import kim.ch9_greedy.Wedding;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
 
-import java.io.*;
-import java.util.*;
-
-
-public class Main {
-    // 5
-    //14 18
-    //12 15
-    //15 20
-    //20 30
-    //5 14 -- > 2
+public class 결혼식_3 {
     static int N;
     static ArrayList<Wedding> list = new ArrayList<>();
-
+    /**
+     * 내 풀이 - 오답이라고 하는데 정답과 비교해봐도 뭐가 틀린지 모르겠음
+     * */
     public int sol() {
         int answer = 0;
         int cnt = 0;
@@ -28,9 +25,23 @@ public class Main {
         }
         return answer;
     }
+    /**
+     * 정답 풀이
+     * */
+    public int solByTeacher() {
+        int answer = Integer.MIN_VALUE;
+        Collections.sort(list);
+        int cnt = 0;
+        for (Wedding wedding : list) {
+            if(wedding.state.equals("s")) cnt++;
+            else cnt--;
+            answer = Math.max(answer, cnt);
+        }
+        return answer;
+    }
 
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        결혼식_3 T = new 결혼식_3();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         for(int i = 0; i < N; i++) {
