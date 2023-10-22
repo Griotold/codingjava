@@ -1,11 +1,12 @@
-import kim.ch8_DFS_BFS_plus.Point;
+package kim.ch8_DFS_BFS_plus;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
-
-public class Main {
-
+public class 피자배달거리_삼성_14 {
     static int N, M, len, answer = Integer.MAX_VALUE;
     static int[] combi;
     static ArrayList<Point> hs, pz;
@@ -28,7 +29,7 @@ public class Main {
         }
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        피자배달거리_삼성_14 T = new 피자배달거리_삼성_14();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
