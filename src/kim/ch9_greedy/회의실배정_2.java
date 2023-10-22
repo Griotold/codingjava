@@ -1,20 +1,19 @@
+package kim.ch9_greedy;
 
-import kim.ch9_greedy.MeetingTime;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
 
-import java.io.*;
-import java.util.*;
-
-
-public class Main {
-    // 5
-    //1 4
-    //2 3
-    //3 5
-    //4 6
-    //5 7 -- > 3
+public class 회의실배정_2 {
     static int N;
     static ArrayList<MeetingTime> list = new ArrayList<>();
 
+    /**
+     * 내 풀이 - 좀 지저분하다
+     * */
     public int sol() {
         int answer = 1;
         Collections.sort(list);
@@ -33,8 +32,25 @@ public class Main {
         return answer;
     }
 
+    /**
+     * 강사님 풀이 - 좀 더 간결하다
+     */
+    public int solByTeacher() {
+        int cnt = 0;
+        Collections.sort(list);
+        int et = 0;
+        for (MeetingTime time : list) {
+            if (time.start >= et) {
+                cnt++;
+                et = time.end;
+            }
+        }
+        return cnt;
+    }
+
+
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        회의실배정_2 T = new 회의실배정_2();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         for(int i = 0; i < N; i++) {
