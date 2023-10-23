@@ -1,16 +1,15 @@
-import java.io.*;
-import java.util.*;
+package kim.ch9_greedy;
 
-public class Main {
-    // 9 7
-    //1 2
-    //2 3
-    //3 4
-    //1 5
-    //6 7
-    //7 8
-    //8 9
-    //3 8 --> NO
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+/**
+ * disjoint set : 서로소 집합
+ * Union & Find
+ * */
+public class 친구인가아닌가_서로소_Union_Find_6 {
     static int[] unf;
 
     public static int find(int v) {
@@ -23,7 +22,7 @@ public class Main {
         if(fa != fb) unf[fa] = fb;
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        친구인가아닌가_서로소_Union_Find_6 T = new 친구인가아닌가_서로소_Union_Find_6();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
