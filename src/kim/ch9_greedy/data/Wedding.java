@@ -1,4 +1,4 @@
-package kim.ch9_greedy;
+package kim.ch9_greedy.data;
 
 public class Wedding implements Comparable<Wedding>{
     public int time;

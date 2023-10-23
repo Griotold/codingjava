@@ -1,4 +1,4 @@
-package kim.ch9_greedy;
+package kim.ch9_greedy.data;
 
 public class MeetingTime implements Comparable<MeetingTime>{
     public int start;

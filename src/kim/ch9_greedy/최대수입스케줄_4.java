@@ -1,5 +1,7 @@
 package kim.ch9_greedy;
 
+import kim.ch9_greedy.data.Lecture;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
