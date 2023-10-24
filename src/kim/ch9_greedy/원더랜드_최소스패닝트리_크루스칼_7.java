@@ -1,10 +1,15 @@
+package kim.ch9_greedy;
+
 import kim.ch9_greedy.data.City;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
 
-public class Main {
-
+public class 원더랜드_최소스패닝트리_크루스칼_7 {
     static int[] unf;
 
     public static int find(int v) {
@@ -17,7 +22,7 @@ public class Main {
         if(fa != fb) unf[fa] = fb;
     }
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        원더랜드_최소스패닝트리_크루스칼_7 T = new 원더랜드_최소스패닝트리_크루스칼_7();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
