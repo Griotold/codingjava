@@ -1,13 +1,17 @@
+package kim.ch9_greedy;
 
 import kim.ch9_greedy.data.Edge;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
 
-public class Main {
-
+public class 원더랜드_최소스패닝트리_프림_8 {
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        원더랜드_최소스패닝트리_프림_8 T = new 원더랜드_최소스패닝트리_프림_8();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
