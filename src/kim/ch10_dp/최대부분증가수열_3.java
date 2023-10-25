@@ -1,9 +1,12 @@
-import java.io.*;
-import java.util.*;
+package kim.ch10_dp;
 
-public class Main {
-    // 8
-    //5 3 7 8 6 2 9 4 --> 4
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 최대부분증가수열_3 {
+
     static int N;
     static int[] dp, arr;
     public int sol() {
@@ -21,7 +24,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        최대부분증가수열_3 T = new 최대부분증가수열_3();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         dp = new int[N];
