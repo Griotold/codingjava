@@ -1,14 +1,11 @@
+package kim.ch10_dp;
+
 import kim.ch10_dp.data.Brick;
 
 import java.io.*;
 import java.util.*;
-public class Main {
-    // 5
-    //25 3 4
-    //4 4 6
-    //9 2 3
-    //16 2 5
-    //1 5 2   --> 10
+
+public class 가장높은탑쌓기_4 {
     static int N;
     static int[] dp;
     static ArrayList<Brick> arr;
@@ -31,7 +28,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Main T = new Main();
+        가장높은탑쌓기_4 T = new 가장높은탑쌓기_4();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         dp = new int[N];
