@@ -1,19 +1,21 @@
 import java.util.*;
 
 class Solution {
-    public char[] solution(int n, int[][] ladder){
-        char[] answer = new char[n];
-        // 1. answer에 알파벳 초기화
-        for(int i = 0; i < n; i++) {
-            answer[i] = (char) (65 + i);
-//            System.out.print(answer[i] + " ");
+    public int solution(String s){
+        int answer = -1;
+        HashMap<Character, Integer> map = new HashMap<>();
+        // 1. 해시
+        for (char ch : s.toCharArray()) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
-        // 2. 이중 for문으로 동시에 사다리 타기
-        for (int[] across : ladder) {
-            for (int i = 0; i < across.length; i++) {
-                char tmp = answer[across[i] - 1];
-                answer[across[i] - 1] = answer[across[i]];
-                answer[across[i]] = tmp;
+
+        // 2. 1개만 쓰인거 찾기
+        char target = 0;
+        for (char key : map.keySet()) {
+            if(map.get(key) == 1) {
+                target = key;
+                answer = s.indexOf(target) + 1;
+                break;
             }
         }
         return answer;
@@ -21,9 +23,9 @@ class Solution {
 
     public static void main(String[] args){
         Solution T = new Solution();
-        System.out.println(Arrays.toString(T.solution(5, new int[][]{{1, 3}, {2, 4}, {1, 4}})));
-        System.out.println(Arrays.toString(T.solution(7, new int[][]{{1, 3, 5}, {1, 3, 6}, {2, 4}})));
-        System.out.println(Arrays.toString(T.solution(8, new int[][]{{1, 5}, {2, 4, 7}, {1, 5, 7}, {2, 5, 7}})));
-        System.out.println(Arrays.toString(T.solution(12, new int[][]{{1, 5, 8, 10}, {2, 4, 7}, {1, 5, 7, 9, 11}, {2, 5, 7, 10}, {3, 6, 8, 11}})));
+        System.out.println(T.solution("statitsics"));
+        System.out.println(T.solution("aabb"));
+        System.out.println(T.solution("stringshowtime"));
+        System.out.println(T.solution("abcdeabcdfg"));
     }
 }
