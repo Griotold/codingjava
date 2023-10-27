@@ -1,7 +1,15 @@
-import java.util.*;
+package it_big_company_problem.ch3_data_structure;
 
-class Solution {
-
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.TreeSet;
+/**
+ * 두 풀이 다 괜찮은 것 같음
+ * */
+public class 최대길이연속수열_1 {
+    /**
+     * 내 풀이 : TreeSet 활용
+     * */
     public int solution(int[] nums){
         int answer = 0;
         int count = 0;
@@ -22,8 +30,27 @@ class Solution {
         return answer + 1;
     }
 
+    /**
+     * 강사님 풀이 : 그냥 Set 활용
+     */
+    public int solByTeacher(int[] nums) {
+        int answer = 0;
+        HashSet<Integer> set = new HashSet<>();
+        for (int x : nums) set.add(x);
+        for (int x : set) {
+            if(set.contains(x - 1)) continue;
+            int cnt = 0;
+            while (set.contains(x)) {
+                cnt++;
+                x++;
+            }
+            answer = Math.max(answer, cnt);
+        }
+        return answer;
+    }
+
     public static void main(String[] args){
-        Solution T = new Solution();
+        최대길이연속수열_1 T = new 최대길이연속수열_1();
         System.out.println(T.solution(new int[]{8, 1, 9, 3, 10, 2, 4, 0, 2, 3}));
         System.out.println(T.solution(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0}));
         System.out.println(T.solution(new int[]{3, 3, 3, 3, 3, 3, 3, 3}));
