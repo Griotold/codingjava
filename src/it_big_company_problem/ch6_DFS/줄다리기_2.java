@@ -1,6 +1,8 @@
-import java.util.*;
-
-class Solution {
+package it_big_company_problem.ch6_DFS;
+/**
+ * 내가 푼 풀이
+ * */
+public class 줄다리기_2 {
     static int answer = 0;
     static int[] ch;
     static int[] perm;
@@ -21,6 +23,7 @@ class Solution {
     }
 
     public int solution(int[][] fight){
+        answer = 0;
         ch = new int[8];
         perm = new int[8];
         // 1. relation 테이블 초기화
@@ -36,7 +39,7 @@ class Solution {
     }
 
     public static void main(String[] args){
-        Solution T = new Solution();
+        줄다리기_2 T = new 줄다리기_2();
         System.out.println(T.solution(new int[][]{{1, 3}, {5, 7}, {4, 2}}));
         System.out.println(T.solution(new int[][]{{3, 2}, {3, 5}, {5, 2}, {7, 3}}));
         System.out.println(T.solution(new int[][]{{1, 2}, {1, 5}, {1, 7}, {1, 3}}));
