@@ -1,6 +1,9 @@
-import java.util.*;
-
-class Solution {
+package it_big_company_problem.ch6_DFS;
+/**
+ * 내 풀이 - 마지막 예제 틀렸음
+ *        - 조합 뽑는 경우의 수 구현이 틀림
+ * */
+public class 바둑대회_3 {
     static int N, answer = Integer.MAX_VALUE;
     static int[] ch, A, B;
 
@@ -23,7 +26,7 @@ class Solution {
             for(int i = s; i < N; i++) {
                 if(ch[i] == 0) {
                     ch[i] = 1;
-                    DFS(L + 1, s + 1, cans);
+                    DFS(L + 1, s + 1, cans); // 여기가 잘못됨 DFS(L+1, i+1, cans); 가 맞다.
                     ch[i] = 0;
                 }
             }
@@ -39,7 +42,7 @@ class Solution {
     }
 
     public static void main(String[] args){
-        Solution T = new Solution();
+        바둑대회_3 T = new 바둑대회_3();
         System.out.println(T.solution(new int[][]{{87, 84}, {66, 78},
                 {94, 94}, {93, 87}, {72, 92}, {78, 63}}));
         System.out.println(T.solution(new int[][]{{10, 20}, {15, 25},
