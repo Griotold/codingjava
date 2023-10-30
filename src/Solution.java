@@ -1,50 +1,44 @@
 import java.util.*;
 
 class Solution {
-    static int N, answer = Integer.MAX_VALUE;
-    static int[] ch, A, B;
-
-    public void DFS(int L, int s, int[][] cans) {
-        if(L == N / 2) {
-            int idxA = 0;
-            int idxB = 0;
-            int sumA = 0;
-            int sumB = 0;
-            for (int i = 0; i < N; i++) {
-                if(ch[i] == 1) A[idxA++] = i;
-                else B[idxB++] = i;
-            }
-            for(int i = 0; i < N / 2; i++) {
-                sumA += cans[A[i]][0];
-                sumB += cans[B[i]][1];
-            }
-            answer = Math.min(answer, Math.abs(sumA-sumB));
-        } else {
-            for(int i = s; i < N; i++) {
-                if(ch[i] == 0) {
-                    ch[i] = 1;
-                    DFS(L + 1, s + 1, cans);
-                    ch[i] = 0;
+    static int[] ch;
+    public int solution(int[] pool, int a, int b, int home){
+        int answer = -1;
+        ch = new int[10001];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(0);
+        int L = 0;
+        ch[0] = 1;
+        while (!queue.isEmpty()) {
+            int len = queue.size();
+            for(int i = 0; i < len; i++) {
+                int now = queue.poll();
+                int forward = now + a;
+                int back = now - b;
+                for(int j = 0; i < pool.length; j++) {
+                    if(forward <= 10000 && ch[forward] == 0 && forward != pool[j]) {
+                        ch[forward] = 1;
+                        queue.offer(forward);
+                    }
+                    if(back > 0 && ch[back] == 0 && back != pool[j]) {
+                        ch[back] = 1;
+                        queue.offer(back);
+                    }
                 }
+                if(forward == home) return L + 1;
+                if(back == home) return L + 1;
             }
+            L++;
         }
-    }
-    public int solution(int[][] cans){
-        N = cans.length;
-        ch = new int[N];
-        A = new int[N / 2];
-        B = new int[N / 2];
-        DFS(0, 0, cans);
         return answer;
     }
 
     public static void main(String[] args){
         Solution T = new Solution();
-        System.out.println(T.solution(new int[][]{{87, 84}, {66, 78},
-                {94, 94}, {93, 87}, {72, 92}, {78, 63}}));
-        System.out.println(T.solution(new int[][]{{10, 20}, {15, 25},
-                {35, 23}, {55, 20}}));
-        System.out.println(T.solution(new int[][]{{11, 27}, {16, 21},
-                {35, 21}, {52, 21}, {25, 33},{25, 32}, {37, 59}, {33, 47}}));
+        System.out.println(T.solution(new int[]{11, 7, 20}, 3, 2, 10));
+//        System.out.println(T.solution(new int[]{1, 15, 11}, 3, 2, 5));
+//        System.out.println(T.solution(new int[]{9, 15, 35, 30, 20}, 2, 1, 25));
+//        System.out.println(T.solution(new int[]{5, 12, 7, 19, 23}, 3, 5, 18));
+//        System.out.println(T.solution(new int[]{10, 15, 20}, 3, 2, 2));
     }
 }
