@@ -1,6 +1,10 @@
-import java.util.*;
+package it_big_company_problem.ch6_DFS;
 
-class Solution {
+import java.util.*;
+/**
+ * Deque 자료구조
+ * */
+public class 팰린드롬경우의수_4 {
     Deque<Character> tmp;
     ArrayList<String> res;
     HashMap<Character, Integer> map;
@@ -58,7 +62,7 @@ class Solution {
     }
 
     public static void main(String[] args){
-        Solution T = new Solution();
+        팰린드롬경우의수_4 T = new 팰린드롬경우의수_4();
         System.out.println(Arrays.toString(T.solution("aaaabb")));
         System.out.println(Arrays.toString(T.solution("abbcc")));
         System.out.println(Arrays.toString(T.solution("abbccee")));
