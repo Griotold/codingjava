@@ -1,68 +1,45 @@
 import java.util.*;
 
 class Solution {
-    Deque<Character> tmp;
-    ArrayList<String> res;
-    HashMap<Character, Integer> map;
-    int len;
+    public int solution(int s, int e){
+        int answer = -1;
+        int dis = 1;
+        int[] ch = new int[200001];
+        int[] dx = {1, -1, 2};
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(s);
+        ch[s] = 1;
+        int L = 0;
+        while (!queue.isEmpty()) {
+            int len = queue.size();
 
-    public void DFS() {
-        if (tmp.size() == len) {
-            String ts = "";
-            for(char x : tmp) ts += x;
-            res.add(ts);
-        } else {
-            for (char key : map.keySet()) {
-                if(map.get(key) == 0) continue;
-                tmp.addFirst(key);
-                tmp.addLast(key);
-                map.put(key, map.get(key) - 2);
-                DFS();
-                tmp.pollFirst();
-                tmp.pollLast();
-                map.put(key, map.get(key) + 2);
+            for(int i = 0; i < len; i++) {
+                int cur = queue.poll();
+//                if(cur == e) return L;
+                for(int j = 0; j < 3; j++) {
+                    int next;
+                    next = cur + dx[j];
+                    if(j == 2) next = cur * 2;
+                    if(next == e + dis) return L + 1;
+                    if(next >= 0 && next <= 200000 && ch[next] == 0) {
+                        ch[next] = 1;
+                        queue.offer(next);
+                    }
+                }
             }
+            L++;
+            e += dis++;
         }
-    }
-
-    public String[] solution(String s){
-        tmp = new LinkedList<>();
-        res = new ArrayList<>();
-        map = new HashMap<>();
-        len = s.length();
-
-        // 1. 팰린드롬을 만들 수 있는지 없는지 판별
-        for(char ch : s.toCharArray()) {
-            map.put(ch, map.getOrDefault(ch, 0) + 1);
-        }
-        int odd = 0;
-        char mid = '#';
-        for (char key : map.keySet()) {
-            if (map.get(key) % 2 == 1) {
-                mid = key;
-                odd++;
-            }
-        }
-        if(odd > 1) return new String[]{};
-        if(mid != '#') {
-            tmp.add(mid);
-            map.put(mid, map.get(mid) - 1);
-        }
-
-        // 2. DFS 호출
-        DFS();
-        String[] answer = new String[res.size()];
-        for(int i = 0; i < res.size(); i++) answer[i] = res.get(i);
 
         return answer;
     }
 
     public static void main(String[] args){
         Solution T = new Solution();
-        System.out.println(Arrays.toString(T.solution("aaaabb")));
-        System.out.println(Arrays.toString(T.solution("abbcc")));
-        System.out.println(Arrays.toString(T.solution("abbccee")));
-        System.out.println(Arrays.toString(T.solution("abbcceee")));
-        System.out.println(Arrays.toString(T.solution("ffeffaae")));
+        System.out.println(T.solution(1, 11));
+        System.out.println(T.solution(10, 3));
+        System.out.println(T.solution(1, 34567));
+        System.out.println(T.solution(5, 6));
+        System.out.println(T.solution(2, 54321));
     }
 }
