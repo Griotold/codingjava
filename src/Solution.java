@@ -1,75 +1,54 @@
 import java.util.*;
 
 class Solution {
-    public boolean isMinUnique(int[] arr) {
-        int mini = Integer.MAX_VALUE;
-        boolean flag = true;
-        for(int x : arr) {
-            if(x == mini) {
-                flag = false;
-                break;
-            }
-            mini = Math.min(mini, x);
-        }
-        return flag;
-    }
-    public int minIndex(int[] arr) {
-        int mini = Integer.MAX_VALUE;
-        int idx = -1;
-        for(int i = 0; i < arr.length; i++) {
-            if(mini > arr[i]) {
-                mini = arr[i];
-                idx = i;
-            }
-        }
-        return idx;
-    }
-    public int solution(int[][] fruit){
+    public int solution(int[] keypad, String password){
         int answer = 0;
-        int n = fruit.length;
-        int[] ch = new int[n];
-        for(int i = 0; i < n; i++) {
-            // 0. 교환한 적이 있는 학생인가?
-            if(ch[i] == 1) continue;
-
-            // 1. 최솟값이 유니크한가?
-            if(!isMinUnique(fruit[i])) continue;
-            int outerMinIdx = minIndex(fruit[i]);
-            for(int j = i + 1; j < n; j++) {
-                // 0. 교환한 적이 있는 학생인가?
-                if(ch[j] == 1) continue;
-                // 1. 최솟값이 유니크한가?
-                if(!isMinUnique(fruit[i])) continue;
-
-                // 2. 최솟값인 과일이 서로 달라야 한다
-                int innerMinIdx = minIndex(fruit[j]);
-                if(outerMinIdx == innerMinIdx) continue;
-
-                // 3. 최솟값인 과일이 그대로 최솟값이어야 한다.
-                if(fruit[i][outerMinIdx] + 1 < fruit[i][innerMinIdx] &&
-                fruit[j][innerMinIdx] + 1 < fruit[j][outerMinIdx]) {
-                    ch[i] = 1;
-                    ch[j] = 1;
-                    fruit[i][outerMinIdx]++;
-                    fruit[i][innerMinIdx]--;
-                    fruit[j][innerMinIdx]++;
-                    fruit[j][outerMinIdx]--;
+        // 1. 2차원 배열로 파싱
+        int[][] keypad2 = new int[3][3];
+        int k = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                keypad2[i][j] = keypad[k + j];
+            }
+            k += 3;
+        }
+        // 2. dist 배열 초기화 0초, 2초
+        int[][] dist = new int[10][10];
+        for (int i = 0; i < dist.length; i++) {
+            Arrays.fill(dist[i], 2);
+        }
+        for(int i = 0; i < 10; i++) dist[i][i] = 0;
+        // 3. dist 배열 1초 걸리는 곳 세팅
+        int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1};
+        int[] dx = {0, 1, 1, 1, 0, -1, -1, -1};
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                for(int u = 0; u < 8; u++){
+                    int ny = i + dy[u];
+                    int nx = j + dx[u];
+                    if(ny >= 0 && ny < 3 && nx >= 0 && nx < 3){
+                        dist[keypad2[i][j]][keypad2[ny][nx]] = 1;
+                    }
                 }
-
             }
         }
-        for(int i = 0; i < n; i++) {
-            answer += Arrays.stream(fruit[i]).min().getAsInt();
+        // 4. password 탐색하여 answer 계산
+        for (int i = 0; i < password.length() - 1; i++) {
+            char ch = password.charAt(i);
+            char ch2 = password.charAt(i+1);
+            int now = ch - 48;
+            int next = ch2 - 48;
+            answer += dist[now][next];
         }
         return answer;
     }
 
     public static void main(String[] args){
         Solution T = new Solution();
-        System.out.println(T.solution(new int[][]{{10, 20, 30}, {12, 15, 20},
-                {20, 12, 15}, {15, 20, 10}, {10, 15, 10}}));
-        System.out.println(T.solution(new int[][]{{10, 9, 11}, {15, 20, 25}}));
-        System.out.println(T.solution(new int[][]{{0, 3, 27}, {20, 5, 5}, {19, 5, 6}, {10, 10, 10}, {15, 10, 5}, {3, 7, 20}}));
-        System.out.println(T.solution(new int[][]{{3, 7, 20}, {10, 15, 5}, {19, 5, 6}, {10, 10, 10}, {15, 10, 5}, {3, 7, 20}, {12, 12, 6}, {10, 20, 0}, {5, 10, 15}}));
+        System.out.println(T.solution(new int[]{2, 5, 3, 7, 1, 6, 4, 9, 8}, "7596218"));
+        System.out.println(T.solution(new int[]{1, 5, 7, 3, 2, 8, 9, 4, 6}, "63855526592"));
+        System.out.println(T.solution(new int[]{2, 9, 3, 7, 8, 6, 4, 5, 1}, "323254677"));
+        System.out.println(T.solution(new int[]{1, 6, 7, 3, 8, 9, 4, 5, 2}, "3337772122"));
     }
+
 }
