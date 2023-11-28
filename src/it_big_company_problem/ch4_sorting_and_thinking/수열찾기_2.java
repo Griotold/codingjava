@@ -1,6 +1,9 @@
-import java.util.*;
+package it_big_company_problem.ch4_sorting_and_thinking;
 
-class Solution {
+import java.util.Arrays;
+import java.util.HashMap;
+
+public class 수열찾기_2 {
     public int[] solution(int[] nums){
         int[] answer = new int[nums.length / 2];
         int idx = 0;
@@ -28,10 +31,9 @@ class Solution {
     }
 
     public static void main(String[] args){
-        Solution T = new Solution();
+        수열찾기_2 T = new 수열찾기_2();
         System.out.println(Arrays.toString(T.solution(new int[]{1, 10, 2, 3, 5, 6})));
         System.out.println(Arrays.toString(T.solution(new int[]{1, 1, 6, 2, 2, 7, 3, 14})));
         System.out.println(Arrays.toString(T.solution(new int[]{14, 4, 2, 6, 3, 10, 10, 5, 5, 7, 7, 14})));
     }
-
 }
