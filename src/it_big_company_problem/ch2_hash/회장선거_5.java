@@ -1,6 +1,54 @@
+package it_big_company_problem.ch2_hash;
+
 import java.util.*;
 
-class Solution {
+public class 회장선거_5 {
+    /**
+     * 정답
+     */
+    public String solByTeacher(String[] votes, int k) {
+        String answer = "";
+        HashMap<String, HashSet<String>> voteHash = new HashMap<>();
+        HashMap<String, Integer> candidate = new HashMap<>();
+        HashMap<String, Integer> present = new HashMap<>();
+
+        // 1. 투표 결과와 후보자 기록
+        for (String x : votes) {
+            String a = x.split(" ")[0];
+            String b = x.split(" ")[1];
+            voteHash.putIfAbsent(a, new HashSet<>());
+            voteHash.get(a).add(b);
+            candidate.put(b, candidate.getOrDefault(b, 0) + 1);
+        }
+
+        // 2. present 해싱 및 최대값 구하기
+        int max = Integer.MIN_VALUE;
+        for (String a : voteHash.keySet()) {
+            int cnt = 0;
+            for (String b : voteHash.get(a)) {
+                if (candidate.get(b) >= k) cnt++;
+            }
+            present.put(a, cnt);
+            max = Math.max(max, cnt);
+        }
+
+        // 3. 가장 많이 받은 사람 리스트에 담기
+        ArrayList<String> tmp = new ArrayList<>();
+        for (String name : present.keySet()) {
+            if (present.get(name) == max) {
+                tmp.add(name);
+            }
+        }
+        // 4. 정렬 후 맨 앞 요소 리턴
+        tmp.sort((a, b) -> a.compareTo(b));
+        answer = tmp.get(0);
+
+        return answer;
+    }
+
+    /**
+     * 내 풀이
+     * */
     public String solution(String[] votes, int k){
         String answer = " ";
         // 1. voteHash -> <String, Set<String>> : 추천한 결과
@@ -50,7 +98,7 @@ class Solution {
     }
 
     public static void main(String[] args){
-        Solution T = new Solution();
+        회장선거_5 T = new 회장선거_5();
         System.out.println(T.solution(new String[]{"john tom", "daniel luis", "john luis", "luis tom", "daniel tom", "luis john"}, 2));
         System.out.println(T.solution(new String[]{"john tom", "park luis", "john luis", "luis tom", "park tom", "luis john", "luis park", "park john", "john park", "tom john", "tom park", "tom luis"}, 2));
         System.out.println(T.solution(new String[]{"cody tom", "john tom", "cody luis", "daniel luis", "john luis", "luis tom", "daniel tom", "luis john"}, 2));
