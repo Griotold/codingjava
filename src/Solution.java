@@ -1,59 +1,40 @@
 import java.util.*;
 
 class Solution {
-    public String solution(String[] votes, int k){
-        String answer = " ";
-        // 1. voteHash -> <String, Set<String>> : 추천한 결과
-        HashMap<String, HashSet<String>> voteHash = new HashMap<>();
-        HashMap<String, Integer> candidate = new HashMap<>();
-        HashMap<String, Integer> present = new HashMap<>();
+    public String[] solution(String[] reports, String times){
+        String[] answer = {};
+        String start = times.split(" ")[0];
+        String end = times.split(" ")[1];
+        int startHour = Integer.parseInt(start.split(":")[0]);
+        int startMinute = Integer.parseInt(start.split(":")[1]);
+        int s = startHour * 60 + startMinute;
+        int endHour = Integer.parseInt(end.split(":")[0]);
+        int endMinute = Integer.parseInt(end.split(":")[1]);
+        int e = endHour * 60 + endMinute;
 
-        for (String s : votes) {
-            String voter = s.substring(0, s.indexOf(' '));
-            String target = s.substring(s.indexOf(' ') + 1);
-//            System.out.println("voter = " + voter + " target = " + target);
-            if (voteHash.get(voter) == null) {
-                voteHash.put(voter, new HashSet<>());
-            }
-            voteHash.get(voter).add(target);
-
-            // 2. candidate -> <String, Integer> : 후보자 리스트
-            candidate.put(target, candidate.getOrDefault(target, 0) + 1);
-
+        // 1. 해싱
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String str : reports) {
+            String person = str.split(" ")[0];
+            String time = str.split(" ")[1];
+            int hour = Integer.parseInt(time.split(":")[0]);
+            int minute = Integer.parseInt(time.split(":")[1]);
+            int totalMinute = hour * 60 + minute;
+            map.put(person, totalMinute);
         }
 
-        // 3. present -> <String, Integer> : 선물받은 횟수
-        for (String voter : voteHash.keySet()) {
-            for(String target : voteHash.get(voter)) {
-                if(candidate.get(target) >= k) {
-                    present.put(voter, present.getOrDefault(voter, 0) + 1);
-                }
-            }
-        }
-        int max = Integer.MIN_VALUE;
-        // 4. 선물이 max로 받는 사람 찾기
-        for (String voter : present.keySet()) {
-            int value = present.get(voter);
-            max = Math.max(max, value);
-        }
-        List<String> result = new ArrayList<>();
-        for (String voter : present.keySet()) {
-            if(present.get(voter) == max) {
-                result.add(voter);
-            }
-        }
+        // 2. 정렬
 
-        // 5. 정렬
-        Collections.sort(result);
-        answer = result.get(0);
+        // 3. 조건에 만족하는 것 담기
+
+
         return answer;
     }
 
     public static void main(String[] args){
         Solution T = new Solution();
-        System.out.println(T.solution(new String[]{"john tom", "daniel luis", "john luis", "luis tom", "daniel tom", "luis john"}, 2));
-        System.out.println(T.solution(new String[]{"john tom", "park luis", "john luis", "luis tom", "park tom", "luis john", "luis park", "park john", "john park", "tom john", "tom park", "tom luis"}, 2));
-        System.out.println(T.solution(new String[]{"cody tom", "john tom", "cody luis", "daniel luis", "john luis", "luis tom", "daniel tom", "luis john"}, 2));
-        System.out.println(T.solution(new String[]{"bob tom", "bob park", "park bob", "luis park", "daniel luis", "luis bob", "park luis", "tom bob", "tom luis", "john park", "park john"}, 3));
+        System.out.println(Arrays.toString(T.solution(new String[]{"john 15:23", "daniel 09:30", "tom 07:23", "park 09:59", "luis 08:57"}, "08:33 09:45")));
+//        System.out.println(Arrays.toString(T.solution(new String[]{"ami 12:56", "daniel 15:00", "bob 19:59", "luis 08:57", "bill 17:35", "tom 07:23", "john 15:23", "park 09:59"}, "15:01 19:59")));
+//        System.out.println(Arrays.toString(T.solution(new String[]{"cody 14:20", "luis 10:12", "alice 15:40", "tom 15:20", "daniel 14:50"}, "14:20 15:20")));
     }
 }
