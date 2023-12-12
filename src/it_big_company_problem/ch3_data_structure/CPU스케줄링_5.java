@@ -1,6 +1,11 @@
-import java.util.*;
+package it_big_company_problem.ch3_data_structure;
 
-class Solution {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+
+public class CPU스케줄링_5 {
     public int[] solution(int[][] tasks){
         int n = tasks.length;
         ArrayList<Integer> res = new ArrayList<>();
@@ -34,7 +39,7 @@ class Solution {
     }
 
     public static void main(String[] args){
-        Solution T = new Solution();
+        CPU스케줄링_5 T = new CPU스케줄링_5();
         System.out.println(Arrays.toString(T.solution(new int[][]{{2, 3}, {1, 2}, {8, 2}, {3, 1}, {10, 2}})));
         System.out.println(Arrays.toString(T.solution(new int[][]{{5, 2}, {7, 3}, {1, 3}, {1, 5}, {2, 2}, {1, 1}})));
         System.out.println(Arrays.toString(T.solution(new int[][]{{1, 2}, {2, 3}, {1, 3}, {3, 3}, {8, 2}, {1, 5}, {2, 2}, {1, 1}})));
