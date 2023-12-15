@@ -26,10 +26,9 @@ public class ArrayStack {
     }
 
     public int search(int target) {
-        int count = 0;
         for (int i = top; i >= 0; i--) {
             if (stack[i] == target) {
-                return top; // 찾은 요소의 위치를 반환
+                return i; // 찾은 요소의 위치를 반환
             }
         }
         return -1; // 찾지 못한 경우 -1 반환
