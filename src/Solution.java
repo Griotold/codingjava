@@ -1,43 +1,38 @@
 import java.util.*;
 
 class Solution {
-    public int[] solution(int[][] tasks){
-        int n = tasks.length;
-        ArrayList<Integer> res = new ArrayList<>();
-        LinkedList<int[]> programs = new LinkedList<>();
-
-        // 1. programs 초기화
-        for (int i = 0; i < n; i++) {
-            programs.add(new int[]{tasks[i][0], tasks[i][1], i});
+    public int[] solution(int[] nums){
+        int n = nums.length;
+        int[] answer = new int[n/2];
+        // 1. nums의 빈도수를 해싱
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int x : nums) {
+            map.put(x, map.getOrDefault(x, 0) + 1);
         }
 
-        // 2. programs 정렬 : 호출시간을 기준으로
-        programs.sort((a, b) -> a[0] - b[0]);
+        // 2. nums를 오름차순 정렬한다
+        Arrays.sort(nums);
 
-        // 3. 우선순위 큐
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
-        int ft = 0;
-        while (!programs.isEmpty() || !pq.isEmpty()) {
-            if (pq.isEmpty()) ft = Math.max(ft, programs.peek()[0]);
-            while (!programs.isEmpty() && programs.peek()[0] <= ft) {
-                int[] x = programs.pollFirst();
-                pq.add(new int[]{x[1], x[2]});
+        // 3. answer 만들어주기
+        List<Integer> list = new ArrayList<>();
+        for (int x : nums) {
+            if (map.get(x) == 0) continue;
+            else {
+                list.add(x);
+                map.put(x, map.get(x) - 1);
+                map.put(x * 2, map.get(x * 2) - 1);
             }
-            int[] ex = pq.poll();
-            ft += ex[0];
-            res.add(ex[1]);
         }
-
-        int[] answer = new int[n];
-        for (int i = 0; i < n; i++) answer[i] = res.get(i);
+        for (int i = 0; i < n / 2; i++) {
+            answer[i] = list.get(i);
+        }
         return answer;
     }
 
     public static void main(String[] args){
         Solution T = new Solution();
-        System.out.println(Arrays.toString(T.solution(new int[][]{{2, 3}, {1, 2}, {8, 2}, {3, 1}, {10, 2}})));
-        System.out.println(Arrays.toString(T.solution(new int[][]{{5, 2}, {7, 3}, {1, 3}, {1, 5}, {2, 2}, {1, 1}})));
-        System.out.println(Arrays.toString(T.solution(new int[][]{{1, 2}, {2, 3}, {1, 3}, {3, 3}, {8, 2}, {1, 5}, {2, 2}, {1, 1}})));
-        System.out.println(Arrays.toString(T.solution(new int[][]{{999, 1000}, {996, 1000}, {998, 1000}, {999, 7}})));
+        System.out.println(Arrays.toString(T.solution(new int[]{1, 10, 2, 3, 5, 6})));
+        System.out.println(Arrays.toString(T.solution(new int[]{1, 1, 6, 2, 2, 7, 3, 14})));
+        System.out.println(Arrays.toString(T.solution(new int[]{14, 4, 2, 6, 3, 10, 10, 5, 5, 7, 7, 14})));
     }
 }
